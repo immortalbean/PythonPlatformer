@@ -20,7 +20,8 @@ while running:
             running = False
     #player.tick()
     clock.tick(60)
-    screen.fill("black")
+    screen.fill((20, 20, 30))
+    #Create system to preload level data, rather than reading the file every frame
     player.tick("level/level_1.json")
     camera_position = pygame.Vector2(mathoperations.lerp(camera_position.x, player.position.x, 0.2), mathoperations.lerp(camera_position.y, player.position.y, 0.2))
     player.draw(screen, camera_position, resolution)
