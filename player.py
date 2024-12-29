@@ -30,13 +30,14 @@ class Player:
         level = json.load(open(level_path))
         self.position.x += self.velocity.x
         for i in level:
-            if collision.boxtobox((self.position.x, self.position.y, self.size.x, self.size.y), (i["position_x"], i["position_y"], i["width"], i["height"])):
-                if self.velocity.x > 0:
-                    self.position.x = (i["position_x"] - ((self.size.x + i["width"]) / 2)) # - 1 # Ingore random +/- 1, just an old problem with collision detection (Now fixed)
-                    self.velocity.x = 0
-                if self.velocity.x < 0:
-                    self.position.x = (i["position_x"] + ((self.size.x + i["width"]) / 2)) # + 1
-                    self.velocity.x = 0
+            if i["type"] == 0:
+               if collision.boxtobox((self.position.x, self.position.y, self.size.x, self.size.y), (i["position_x"], i["position_y"], i["width"], i["height"])):
+                  if self.velocity.x > 0:
+                      self.position.x = (i["position_x"] - ((self.size.x + i["width"]) / 2)) # - 1 # Ingore random +/- 1, just an old problem with collision detection (Now fixed)
+                      self.velocity.x = 0
+                  if self.velocity.x < 0:
+                     self.position.x = (i["position_x"] + ((self.size.x + i["width"]) / 2)) # + 1
+                     self.velocity.x = 0
         self.position.y += self.velocity.y
         self.is_on_ground = False
         for i in level:
