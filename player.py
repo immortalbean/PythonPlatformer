@@ -6,7 +6,7 @@ import collision
 player_sprite = pygame.image.load("assets/player.png")
 
 class Player:
-    def __init__(self, size: pygame.Vector2, acceleration: float = 2, air_acceleration: float = 1, deceleration: float = 0.8, air_deceleration: float = 0.9):
+    def __init__(self, size: pygame.Vector2, acceleration: float = 2, air_acceleration: float = 1, deceleration: float = 0.8, air_deceleration: float = 0.9, jump_power: float = -15):
         self.position = pygame.Vector2(0, 0)
         self.velocity = pygame.Vector2(0, 0)
         self.is_on_ground = False
@@ -15,10 +15,11 @@ class Player:
         self.air_acceleration = air_acceleration
         self.deceleration = deceleration
         self.air_deceleration = air_deceleration
+        self.jump_power = jump_power
     def tick(self, level_path: str):
         keys = pygame.key.get_pressed()
         if keys[pygame.K_UP] and self.is_on_ground:
-            self.velocity.y = -15
+            self.velocity.y = self.jump_power
         if keys[pygame.K_LEFT]:
             if self.is_on_ground:
                 self.velocity.x -= self.acceleration
