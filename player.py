@@ -6,20 +6,33 @@ import collision
 player_sprite = pygame.image.load("assets/player.png")
 
 class Player:
-    def __init__(self, size: pygame.Vector2):
+    def __init__(self, size: pygame.Vector2, acceleration: float = 2, air_acceleration: float = 1, deceleration: float = 0.8, air_deceleration: float = 0.9):
         self.position = pygame.Vector2(0, 0)
         self.velocity = pygame.Vector2(0, 0)
-        self.size = size
         self.is_on_ground = False
+        self.size = size
+        self.acceleration = acceleration
+        self.air_acceleration = air_acceleration
+        self.deceleration = deceleration
+        self.air_deceleration = air_deceleration
     def tick(self, level_path: str):
         keys = pygame.key.get_pressed()
         if keys[pygame.K_UP] and self.is_on_ground:
             self.velocity.y = -15
         if keys[pygame.K_LEFT]:
-            self.velocity.x -= 2
+            if self.is_on_ground:
+                self.velocity.x -= self.acceleration
+            else:
+                self.velocity.x -= self.air_acceleration
         if keys[pygame.K_RIGHT]:
-            self.velocity.x += 2
-        self.velocity.x *= 0.8
+            if self.is_on_ground:
+                self.velocity.x += self.acceleration
+            else:
+                self.velocity.x += self.air_acceleration
+        if self.is_on_ground:
+           self.velocity.x *= self.deceleration
+        else:
+            self.velocity.x *= self.air_deceleration
         self.velocity += pygame.Vector2(0, 0.6)
         self.move(level_path)
 
@@ -27,6 +40,7 @@ class Player:
         # pygame.draw.rect(surface, (30, 40, 230), (((self.position.x - (self.size.x / 2)) - camera_pos.x) + resolution[0] / 2, ((self.position.y - (self.size.y / 2)) - camera_pos.y) + resolution[1] / 2, self.size.x, self.size.y))
         surface.blit(player_sprite, (((self.position.x - (self.size.x / 2)) - camera_pos.x) + resolution[0] / 2, ((self.position.y - (self.size.y / 2)) - camera_pos.y) + resolution[1] / 2))
     def move(self, level_path: str):
+        #Perhaps add slope support in the future
         level = json.load(open(level_path))
         self.position.x += self.velocity.x
         for i in level:
