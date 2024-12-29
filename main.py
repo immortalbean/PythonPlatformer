@@ -29,4 +29,4 @@ while running:
     player.draw(screen, camera_position, resolution)
     render.render_level(screen, "level/level_1.json", camera_position, resolution)
     pygame.display.flip()
-    # ^ Move to render.py
+    # ^ Try to move to render.py
