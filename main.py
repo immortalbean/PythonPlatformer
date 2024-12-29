@@ -11,7 +11,7 @@ running = True
 clock = pygame.time.Clock()
 camera_position = pygame.Vector2(0, 0)
 
-player = player.Player(pygame.Vector2(30, 50))
+player = player.Player()
 
 
 while running:
