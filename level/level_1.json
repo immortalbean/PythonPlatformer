@@ -54,5 +54,12 @@
 		"width": 50,
 		"height": 50,
 		"texture": 0
+	},
+	{
+		"type": 1,
+		"position_x": 0,
+		"position_y": 1000,
+		"width": 5000,
+		"height": 30
 	}
 ]
