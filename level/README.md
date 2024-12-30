@@ -9,5 +9,4 @@ The texture parameter is used for the texture the object is rendered as.
  - The parameter is either supposed to be set to "none", or an integer value that reads from a JSON file located at: assets/textures.json
  - Textures.json stores a set of textures with parameters. These parameters are:
     - "file" - The path of the texture file, can be any format accepted by the PyGame module.
-    - "width" - (Currently unused) - The width of the texture.
-    - "height" - (Currently unused) - The height of the texture.
+    - (More to come)

@@ -1,12 +1,8 @@
 [
 	{
 		"file": "assets/textures/brick.png",
-		"width": 128,
-		"height": 128
 	},
 	{
 		"file": "assets/textures/plastic.png",
-		"width": 128,
-		"height": 128
 	}
 ]
