@@ -15,17 +15,20 @@ class Player:
         self.deceleration = deceleration
         self.air_deceleration = air_deceleration
         self.jump_power = jump_power
+        self.direction = 1
     def tick(self, level_path: str):
         keys = pygame.key.get_pressed()
         if keys[pygame.K_UP] and self.is_on_ground:
             self.velocity.y = self.jump_power
             self.is_on_ground = False
         if keys[pygame.K_LEFT]:
+            self.direction = -1
             if self.is_on_ground:
                 self.velocity.x -= self.acceleration
             else:
                 self.velocity.x -= self.air_acceleration
         if keys[pygame.K_RIGHT]:
+            self.direction = 1
             if self.is_on_ground:
                 self.velocity.x += self.acceleration
             else:
@@ -39,7 +42,7 @@ class Player:
 
     def draw(self, surface: pygame.surface, camera_pos: pygame.Vector2, resolution: tuple[int, int]):
         # pygame.draw.rect(surface, (30, 40, 230), (((self.position.x - (self.size.x / 2)) - camera_pos.x) + resolution[0] / 2, ((self.position.y - (self.size.y / 2)) - camera_pos.y) + resolution[1] / 2, self.size.x, self.size.y))
-        surface.blit(player_sprite, (((self.position.x - (self.size.x / 2)) - camera_pos.x) + resolution[0] / 2, ((self.position.y - (self.size.y / 2)) - camera_pos.y) + resolution[1] / 2))
+        surface.blit(pygame.transform.flip(player_sprite, self.direction == -1, False), (((self.position.x - (self.size.x / 2)) - camera_pos.x) + resolution[0] / 2, ((self.position.y - (self.size.y / 2)) - camera_pos.y) + resolution[1] / 2))
     def move(self, level_path: str):
         #Perhaps add slope support in the future
         level = json.load(open(level_path))
@@ -73,3 +76,4 @@ class Player:
         self.position = pygame.Vector2(0, 0)
         self.velocity = pygame.Vector2(0, 0)
         self.is_on_ground = False
+        self.direction = 1
