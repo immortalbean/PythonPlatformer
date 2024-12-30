@@ -18,15 +18,15 @@ class Player:
         self.jump_power = jump_power
     def tick(self, level_path: str):
         keys = pygame.key.get_pressed()
-        if keys[pygame.K_w] and self.is_on_ground:
+        if keys[pygame.K_UP] and self.is_on_ground:
             self.velocity.y = self.jump_power
             self.is_on_ground = False
-        if keys[pygame.K_a]:
+        if keys[pygame.K_LEFT]:
             if self.is_on_ground:
                 self.velocity.x -= self.acceleration
             else:
                 self.velocity.x -= self.air_acceleration
-        if keys[pygame.K_d]:
+        if keys[pygame.K_RIGHT]:
             if self.is_on_ground:
                 self.velocity.x += self.acceleration
             else:
