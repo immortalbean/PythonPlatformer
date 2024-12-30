@@ -41,14 +41,6 @@
 	},
 	{
 		"type": 0,
-		"position_x": 400,
-		"position_y": 200,
-		"width": 15,
-		"height": 15,
-		"texture": "none" 
-	},
-	{
-		"type": 0,
 		"position_x": 0,
 		"position_y": -50,
 		"width": 50,

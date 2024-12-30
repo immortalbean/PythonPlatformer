@@ -22,11 +22,11 @@ while running:
     clock.tick(60)
     screen.fill((50, 50, 70))
     #Create system to preload level data, rather than reading the file every frame
-    player.tick("level/level_1.json")
+    player.tick("level/testing_level.json")
     camera_position = pygame.Vector2(mathoperations.lerp(camera_position.x, player.position.x, 0.2), mathoperations.lerp(camera_position.y, player.position.y, 0.2))
     #Move the camera movement and player.draw() to the player.tick() function instead of in the main file
     #Maybe even move the player.draw() to render.py
     player.draw(screen, camera_position, resolution)
-    render.render_level(screen, "level/level_1.json", camera_position, resolution)
+    render.render_level(screen, "level/testing_level.json", camera_position, resolution)
     pygame.display.flip()
     # ^ Try to move to render.py
