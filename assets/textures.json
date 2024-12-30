@@ -1,0 +1,12 @@
+[
+	{
+		"file": "assets/brick.png",
+		"width": 128,
+		"height": 128
+	},
+	{
+		"file": "assets/plastic.png",
+		"width": 128,
+		"height": 128
+	}
+]
