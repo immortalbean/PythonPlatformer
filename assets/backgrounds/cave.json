@@ -1,0 +1,23 @@
+[
+	{
+		"image": "assets/backgrounds/cave/00.png",
+		"position_x": 0,
+		"position_y": 0,
+		"parallax_multiplier": 0.2,
+		"loop": true
+	},
+	{
+		"image": "assets/backgrounds/cave/01.png",
+		"position_x": 0,
+		"position_y": 0,
+		"parallax_multiplier": 0.15,
+		"loop": true
+	},
+	{
+		"image": "assets/backgrounds/cave/02.png",
+		"position_x": 0,
+		"position_y": 0,
+		"parallax_multiplier": 0.1,
+		"loop": true
+	}
+]
