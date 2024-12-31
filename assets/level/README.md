@@ -10,3 +10,9 @@ The texture parameter is used for the texture the object is rendered as.
  - Textures.json stores a set of textures with parameters. These parameters are:
     - "file" - The path of the texture file, can be any format accepted by the PyGame module.
     - (More to come)
+### Levels.json (in assets folder)
+In order for a level to be loaded in-game, it has to be included in the project's levels.json file. This file is an array of every level, each being an object within it.
+The properties goes as followed:
+  - "level_name" - The name of the level
+  - "level_path" - The path of the level's JSON.
+  - "background_color" - A 3 value array which corrospond to RGB.

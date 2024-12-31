@@ -1,0 +1,7 @@
+[
+	{
+		"level_name": "Testing Level",
+		"level_path": "assets/level/testing_level.json",
+		"background_color": [50, 50, 70]
+	}
+]

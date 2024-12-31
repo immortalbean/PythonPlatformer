@@ -8,9 +8,14 @@ texture_list = []
 for i in texture_file:
     texture_list.append(pygame.image.load(i["file"]))
 
-def render_level(surface: pygame.surface, level_path: str, camera_position: pygame.Vector2, resolution: tuple[int, int]):
-    file = json.load(open(level_path))
+level_file = json.load(open("assets/levels.json"))
+level_list = []
 
+for i in level_file:
+    level_list.append(json.load(open(i["level_path"])))
+
+def render_level(surface: pygame.surface, level_id: int, camera_position: pygame.Vector2, resolution: tuple[int, int]):
+    file = level_list[level_id]
     for i in file:
          if i["type"] == 0:
              if i["texture"] == "none":

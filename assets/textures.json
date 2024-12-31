@@ -4,5 +4,11 @@
 	},
 	{
 		"file": "assets/textures/plastic.png"
+	},
+	{
+		"file": "assets/textures/grass.png"
+	},
+	{
+		"file": "assets/textures/grass_long.png"
 	}
 ]

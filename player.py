@@ -4,6 +4,12 @@ import collision
 
 player_sprite = pygame.image.load("assets/player.png")
 
+level_file = json.load(open("assets/levels.json"))
+level_list = []
+
+for i in level_file:
+    level_list.append(json.load(open(i["level_path"])))
+
 class Player:
     def __init__(self, size: pygame.Vector2 = pygame.Vector2(30, 50), acceleration: float = 2, air_acceleration: float = 1, deceleration: float = 0.8, air_deceleration: float = 0.9, jump_power: float = -15):
         self.position = pygame.Vector2(0, 0)
@@ -16,7 +22,7 @@ class Player:
         self.air_deceleration = air_deceleration
         self.jump_power = jump_power
         self.direction = 1
-    def tick(self, level_path: str):
+    def tick(self, level_id: int):
         keys = pygame.key.get_pressed()
         if keys[pygame.K_UP] and self.is_on_ground:
             self.velocity.y = self.jump_power
@@ -38,14 +44,14 @@ class Player:
         else:
             self.velocity.x *= self.air_deceleration
         self.velocity += pygame.Vector2(0, 0.6)
-        self.move(level_path)
+        self.move(level_id)
 
     def draw(self, surface: pygame.surface, camera_pos: pygame.Vector2, resolution: tuple[int, int]):
         # pygame.draw.rect(surface, (30, 40, 230), (((self.position.x - (self.size.x / 2)) - camera_pos.x) + resolution[0] / 2, ((self.position.y - (self.size.y / 2)) - camera_pos.y) + resolution[1] / 2, self.size.x, self.size.y))
         surface.blit(pygame.transform.flip(player_sprite, self.direction == -1, False), (((self.position.x - (self.size.x / 2)) - camera_pos.x) + resolution[0] / 2, ((self.position.y - (self.size.y / 2)) - camera_pos.y) + resolution[1] / 2))
-    def move(self, level_path: str):
+    def move(self, level_id: int):
         #Perhaps add slope support in the future
-        level = json.load(open(level_path))
+        level = level_list[level_id]
         self.position.x += self.velocity.x
         for i in level:
             if i["type"] == 0:

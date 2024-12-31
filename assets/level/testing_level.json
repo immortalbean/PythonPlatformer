@@ -2,34 +2,10 @@
 	{
 		"type": 0,
 		"position_x": 0,
-		"position_y": 120,
-		"width": 30,
-		"height": 30,
-		"texture": "none"
-	},
-	{
-		"type": 0,
-		"position_x": 15,
-		"position_y": 150,
-		"width": 60,
-		"height": 30,
-		"texture": "none"
-	},
-	{
-		"type": 0,
-		"position_x": 150,
-		"position_y": 100,
-		"width": 100,
-		"height": 30,
-		"texture": 1
-	},
-	{
-		"type": 0,
-		"position_x": 0,
 		"position_y": 300,
 		"width": 1000,
 		"height": 100,
-		"texture": "none"
+		"texture": 3
 	},
 	{
 		"type": 0,
@@ -40,18 +16,26 @@
 		"texture": "none"
 	},
 	{
-		"type": 0,
-		"position_x": 0,
-		"position_y": -50,
-		"width": 50,
-		"height": 50,
-		"texture": 0
-	},
-	{
 		"type": 1,
 		"position_x": 0,
 		"position_y": 1000,
 		"width": 5000,
 		"height": 30
+	},
+	{
+		"type": 0,
+		"position_x": 350,
+		"position_y": 186,
+		"width": 128,
+		"height": 128,
+		"texture": 0
+	},
+	{
+		"type": 0,
+		"position_x": 350,
+		"position_y": 90,
+		"width": 64,
+		"height": 64,
+		"texture": 1
 	}
 ]
