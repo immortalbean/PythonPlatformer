@@ -11,7 +11,7 @@ for i in level_file:
     level_list.append(json.load(open(i["level_path"])))
 
 class Player:
-    def __init__(self, size: pygame.Vector2 = pygame.Vector2(30, 50), acceleration: float = 2, air_acceleration: float = 1, deceleration: float = 0.8, air_deceleration: float = 0.9, jump_power: float = -15):
+    def __init__(self, size: pygame.Vector2 = pygame.Vector2(30, 50), acceleration: float = 2, air_acceleration: float = 1, deceleration: float = 0.8, air_deceleration: float = 0.9, jump_power: float = -15, gravity_power: float = 1.2):
         self.position = pygame.Vector2(0, 0)
         self.velocity = pygame.Vector2(0, 0)
         self.is_on_ground = False
@@ -22,11 +22,15 @@ class Player:
         self.air_deceleration = air_deceleration
         self.jump_power = jump_power
         self.direction = 1
+        self.gravity_power = gravity_power
     def tick(self, level_id: int):
         keys = pygame.key.get_pressed()
-        if keys[pygame.K_UP] and self.is_on_ground:
-            self.velocity.y = self.jump_power
-            self.is_on_ground = False
+        self.applied_gravity = self.gravity_power
+        if keys[pygame.K_UP]:
+            self.applied_gravity = self.gravity_power / 2
+            if self.is_on_ground:
+                self.velocity.y = self.jump_power
+                self.is_on_ground = False
         if keys[pygame.K_LEFT]:
             self.direction = -1
             if self.is_on_ground:
@@ -43,7 +47,8 @@ class Player:
            self.velocity.x *= self.deceleration
         else:
             self.velocity.x *= self.air_deceleration
-        self.velocity += pygame.Vector2(0, 0.6)
+
+        self.velocity += pygame.Vector2(0, self.applied_gravity)
         self.move(level_id)
 
     def draw(self, surface: pygame.surface, camera_pos: pygame.Vector2, resolution: tuple[int, int]):
