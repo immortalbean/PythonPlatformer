@@ -17,7 +17,7 @@ for i in level_file:
 
 def render_level(surface: pygame.surface, level_id: int, camera_position: pygame.Vector2, resolution: tuple[int, int], player: player.Player):
     file = level_list[level_id]
-    surface.fill((50, 50, 70))
+    surface.fill(((level_file[level_id])["background_color"]))
     for i in file:
          if i["type"] == 0:
              if i["texture"] == "none":
