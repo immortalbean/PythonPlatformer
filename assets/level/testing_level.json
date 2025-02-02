@@ -5,6 +5,7 @@
 		"position_y": 300,
 		"width": 1000,
 		"height": 100,
+		"has_motion": false,
 		"texture": 3
 	},
 	{
@@ -13,6 +14,7 @@
 		"position_y": 400,
 		"width": 1400,
 		"height": 100,
+		"has_motion": false,
 		"texture": "none"
 	},
 	{
@@ -20,6 +22,7 @@
 		"position_x": 0,
 		"position_y": 1000,
 		"width": 5000,
+		"has_motion": false,
 		"height": 30
 	},
 	{
@@ -28,6 +31,7 @@
 		"position_y": 186,
 		"width": 128,
 		"height": 128,
+		"has_motion": false,
 		"texture": 0
 	},
 	{
@@ -36,6 +40,7 @@
 		"position_y": 90,
 		"width": 64,
 		"height": 64,
+		"has_motion": false,
 		"texture": 1
 	}
 ]
