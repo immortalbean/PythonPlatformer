@@ -20,15 +20,8 @@ while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
-    #player.tick()
     clock.tick(60)
-    screen.fill((50, 50, 70))
-    #Create system to preload level data, rather than reading the file every frame
     player.tick(0)
     camera_position = pygame.Vector2(mathoperations.lerp(camera_position.x, player.position.x, 0.2), mathoperations.lerp(camera_position.y, player.position.y - 100, 0.05))
-    #Move the camera movement and player.draw() to the player.tick() function instead of in the main file
-    #Maybe even move the player.draw() to render.py
-    player.draw(screen, camera_position, resolution)
-    render.render_level(screen, 0, camera_position, resolution)
-    pygame.display.flip()
-    # ^ Try to move to render.py
+    #Move the camera movement to the player.tick()
+    render.render_level(screen, 0, camera_position, resolution, player)
