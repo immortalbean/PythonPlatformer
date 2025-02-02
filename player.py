@@ -11,7 +11,7 @@ for i in level_file:
     level_list.append(json.load(open(i["level_path"])))
 
 class Player:
-    def __init__(self, size: pygame.Vector2 = pygame.Vector2(30, 50), acceleration: float = 2, air_acceleration: float = 1, deceleration: float = 0.8, air_deceleration: float = 0.9, jump_power: float = -15, gravity_power: float = 1.2):
+    def __init__(self, size: pygame.Vector2 = pygame.Vector2(30, 50), acceleration: float = 2, air_acceleration: float = 1, deceleration: float = 0.8, air_deceleration: float = 0.9, jump_power: float = -15, gravity_power: float = 1.2, jump_gravity_power: float = 0.6):
         self.position = pygame.Vector2(0, 0)
         self.velocity = pygame.Vector2(0, 0)
         self.is_on_ground = False
@@ -23,11 +23,12 @@ class Player:
         self.jump_power = jump_power
         self.direction = 1
         self.gravity_power = gravity_power
+        self.jump_gravity_power = jump_gravity_power
     def tick(self, level_id: int):
         keys = pygame.key.get_pressed()
         self.applied_gravity = self.gravity_power
         if keys[pygame.K_UP]:
-            self.applied_gravity = self.gravity_power / 2
+            self.applied_gravity = self.jump_gravity_power
             if self.is_on_ground:
                 self.velocity.y = self.jump_power
                 self.is_on_ground = False
