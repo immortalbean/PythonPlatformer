@@ -1,4 +1,4 @@
-print("Python Platformer - Version 1.0")
+print("Python Platformer - Version 1.1")
 
 import pygame
 import os; os.chdir(os.path.dirname(__file__))
