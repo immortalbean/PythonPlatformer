@@ -4,7 +4,6 @@ import pygame
 import os; os.chdir(os.path.dirname(__file__))
 import render
 import mathoperations
-import player
 import gameplay
 import json
 
@@ -14,8 +13,7 @@ screen = pygame.display.set_mode(resolution)
 running = True
 clock = pygame.time.Clock()
 camera = gameplay.Camera()
-
-player = player.Player()
+player = gameplay.Player()
 
 program_manifest = json.load(open("assets/manifest.json"))
 pygame.display.set_caption(program_manifest["name"])

@@ -1,7 +1,6 @@
 import pygame
 import json
 import os; os.chdir(os.path.dirname(__file__))
-import player
 import gameplay
 pygame.font.init()
 
@@ -16,10 +15,10 @@ level_list = []
 
 for i in level_file:
     level_list.append(json.load(open(i["level_path"])))
-    print("Render.py: " + i["level_name"] + " succesfully loaded")
+    print("Render.py: " + i["level_name"] + " successfully loaded")
 
 
-def render_game(surface: pygame.surface, level_id: int, camera: gameplay.Camera, resolution: tuple[int, int], player: player.Player):
+def render_game(surface: pygame.surface, level_id: int, camera: gameplay.Camera, resolution: tuple[int, int], player: gameplay.Player):
     file = level_list[level_id]
     surface.fill(((level_file[level_id])["background_color"]))
     for i in file:
