@@ -6,6 +6,7 @@ import render
 import mathoperations
 import player
 import gameplay
+import json
 
 pygame.init()
 resolution = (1280, 720)
@@ -15,6 +16,10 @@ clock = pygame.time.Clock()
 camera = gameplay.Camera()
 
 player = player.Player()
+
+program_manifest = json.load(open("assets/manifest.json"))
+pygame.display.set_caption(program_manifest["name"])
+pygame.display.set_icon(pygame.image.load(program_manifest["icon"]))
 
 while running:
     for event in pygame.event.get():

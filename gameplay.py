@@ -2,6 +2,7 @@ import pygame
 import player
 import mathoperations
 import collision
+import json
 
 class Camera:
     def __init__(self):
