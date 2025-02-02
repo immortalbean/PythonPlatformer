@@ -14,6 +14,8 @@ level_list = []
 
 for i in level_file:
     level_list.append(json.load(open(i["level_path"])))
+    print("Render.py: " + i["level_name"] + " succesfully loaded")
+
 
 def render_level(surface: pygame.surface, level_id: int, camera_position: pygame.Vector2, resolution: tuple[int, int], player: player.Player):
     file = level_list[level_id]

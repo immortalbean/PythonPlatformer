@@ -9,6 +9,7 @@ level_list = []
 
 for i in level_file:
     level_list.append(json.load(open(i["level_path"])))
+    print("Player.py: " + i["level_name"] + " succesfully loaded")
 
 class Player:
     def __init__(self, size: pygame.Vector2 = pygame.Vector2(30, 50), acceleration: float = 2, air_acceleration: float = 1, deceleration: float = 0.8, air_deceleration: float = 0.9, jump_power: float = -15, gravity_power: float = 1.2, jump_gravity_power: float = 0.6):
@@ -56,6 +57,7 @@ class Player:
         # pygame.draw.rect(surface, (30, 40, 230), (((self.position.x - (self.size.x / 2)) - camera_pos.x) + resolution[0] / 2, ((self.position.y - (self.size.y / 2)) - camera_pos.y) + resolution[1] / 2, self.size.x, self.size.y))
         surface.blit(pygame.transform.flip(player_sprite, self.direction == -1, False), (((self.position.x - (self.size.x / 2)) - camera_pos.x) + resolution[0] / 2, ((self.position.y - (self.size.y / 2)) - camera_pos.y) + resolution[1] / 2))
     def move(self, level_id: int):
+        #Integrate delta-time in the near future
         #Perhaps add slope support in the future
         level = level_list[level_id]
         self.position.x += self.velocity.x
