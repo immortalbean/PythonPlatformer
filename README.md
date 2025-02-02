@@ -9,6 +9,6 @@ Make sure Pygame is both installed and up to date. (See https://www.pygame.org/w
 If it is, make sure you're opening main.py.
 ### Coming soon list
   - Background Support
-  - 9-slice platoforms
+  - 9-slice platforms
   - Player Character Animation
   - Level Interaction
