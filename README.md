@@ -8,7 +8,7 @@ Yes, with credit. This isn't the best platformer engine for Python, but if it fi
 Make sure Pygame is both installed and up to date. (See https://www.pygame.org/wiki/GettingStarted )
 If it is, make sure you're opening main.py.
 ### Coming soon list
-  -Background Support
-  -9 Square tiles
-  -Player Character Animation
-  -Level Interaction
+  - Background Support
+  - 9-slice platoforms
+  - Player Character Animation
+  - Level Interaction
