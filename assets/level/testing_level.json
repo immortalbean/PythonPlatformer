@@ -22,8 +22,8 @@
 		"position_x": 0,
 		"position_y": 1000,
 		"width": 5000,
-		"has_motion": false,
 		"height": 30
+		"has_motion": false,
 	},
 	{
 		"type": 0,
