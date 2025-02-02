@@ -4,7 +4,7 @@ import collision
 import gameplay
 import mathoperations
 
-player_sprite = pygame.image.load("assets/player.png")
+player_sprite = pygame.image.load("assets/art/player.png")
 
 level_file = json.load(open("assets/levels.json"))
 level_list = []
