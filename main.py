@@ -5,13 +5,14 @@ import os; os.chdir(os.path.dirname(__file__))
 import render
 import mathoperations
 import player
+import gameplay
 
 pygame.init()
 resolution = (1280, 720)
 screen = pygame.display.set_mode(resolution)
 running = True
 clock = pygame.time.Clock()
-camera_position = pygame.Vector2(0, 0)
+camera = gameplay.Camera()
 
 player = player.Player()
 
@@ -21,8 +22,5 @@ while running:
         if event.type == pygame.QUIT:
             running = False
     clock.tick(60)
-    player.tick(0)
-    camera_position = pygame.Vector2(mathoperations.lerp(camera_position.x, player.position.x, 0.2), mathoperations.lerp(camera_position.y, player.position.y - 100, 0.05))
-    #Move the camera movement to the player.tick()
-    #Make camera class
-    render.render_level(screen, 0, camera_position, resolution, player)
+    player.tick(0, camera)
+    render.render_level(screen, 0, camera, resolution, player)
