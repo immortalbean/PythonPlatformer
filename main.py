@@ -27,4 +27,4 @@ while running:
             running = False
     clock.tick(60)
     player.tick(0, camera)
-    render.render_level(screen, 0, camera, resolution, player)
+    render.render_game(screen, 0, camera, resolution, player)
