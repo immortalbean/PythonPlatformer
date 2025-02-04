@@ -6,6 +6,7 @@ import json
 class Camera:
     def __init__(self):
         self.position: pygame.Vector2 = pygame.Vector2(0, 0)
+        self.zoom: float = 1.0
 
 class Player:
 
@@ -39,6 +40,15 @@ class Player:
             if self.is_on_ground:
                 self.velocity.y = self.jump_power
                 self.is_on_ground = False
+        for event in pygame.event.get():
+            if event.type == pygame.MOUSEWHEEL:
+                camera.zoom += event.y * 0.05
+                if camera.zoom < 0:
+                    camera.zoom -= event.y * 0.05
+        #if keys[pygame.K_e]:
+        #    camera.zoom += 0.01
+        #if keys[pygame.K_q]:
+        #    camera.zoom -= 0.01
         if keys[pygame.K_LEFT]:
             self.direction = -1
             if self.is_on_ground:
@@ -58,11 +68,11 @@ class Player:
 
         self.velocity += pygame.Vector2(0, self.applied_gravity)
         self.move(level_id)
-        camera.position = pygame.Vector2(mathoperations.lerp(camera.position.x, self.position.x, 0.2), mathoperations.lerp(camera.position.y, self.position.y - 100, 0.05))
+        camera.position = pygame.Vector2(mathoperations.lerp(camera.position.x, self.position.x, 0.2), mathoperations.lerp(camera.position.y, self.position.y - (100 / camera.zoom), 0.05))
 
     def draw(self, surface: pygame.surface, camera: Camera, resolution: tuple[int, int]):
         # pygame.draw.rect(surface, (30, 40, 230), (((self.position.x - (self.size.x / 2)) - camera_pos.x) + resolution[0] / 2, ((self.position.y - (self.size.y / 2)) - camera_pos.y) + resolution[1] / 2, self.size.x, self.size.y))
-        surface.blit(pygame.transform.flip(self.sprite, self.direction == -1, False), (((self.position.x - (self.size.x / 2)) - camera.position.x) + resolution[0] / 2, ((self.position.y - (self.size.y / 2)) - camera.position.y) + resolution[1] / 2))
+        surface.blit(pygame.transform.scale_by(pygame.transform.flip(self.sprite, self.direction == -1, False), camera.zoom), (((self.position.x - (self.size.x / 2)) - camera.position.x) * camera.zoom + resolution[0] / 2, ((self.position.y - (self.size.y / 2)) - camera.position.y) * camera.zoom + resolution[1] / 2))
     def move(self, level_id: int):
         #Integrate delta-time in the near future
         #Perhaps add slope support in the future
