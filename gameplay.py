@@ -40,11 +40,6 @@ class Player:
             if self.is_on_ground:
                 self.velocity.y = self.jump_power
                 self.is_on_ground = False
-        for event in pygame.event.get():
-            if event.type == pygame.MOUSEWHEEL:
-                camera.zoom += event.y * 0.05
-                if camera.zoom < 0:
-                    camera.zoom -= event.y * 0.05
         #if keys[pygame.K_e]:
         #    camera.zoom += 0.01
         #if keys[pygame.K_q]:
